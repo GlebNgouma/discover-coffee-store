@@ -17,8 +17,13 @@ async function getData() {
 
 export const metadata: Metadata = {
   title: "Coffee Connoissseur",
-  description: "Découvrez les cafés locaux près de chez vous.",
-  metadataBase: new URL(process.env.URL || "localhost:3000"),
+  description:
+    "Découvrez les cafés locaux près de chez vous en toute confiance.",
+  metadataBase: new URL(
+    process.env.NODE_ENV === "production"
+      ? "https://dicover-coffee-stores.vercel.app/api/coffee-stores"
+      : "http://localhost:3000"
+  ),
   alternates: { canonical: `/` },
 };
 

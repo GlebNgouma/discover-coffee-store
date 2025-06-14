@@ -32,7 +32,11 @@ export async function generateMetadata({
   return {
     title: name,
     description: `${name} - Coffee Store`,
-    metadataBase: new URL(process.env.URL || "localhost:3000"),
+    metadataBase: new URL(
+      process.env.NODE_ENV === "production"
+        ? "https://dicover-coffee-stores.vercel.app/api/coffee-stores"
+        : "http://localhost:3000"
+    ),
     alternates: { canonical: `/coffee-stores/${id}` },
   };
 }
